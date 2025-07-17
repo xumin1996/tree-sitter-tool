@@ -43,6 +43,14 @@ fn main() {
             parser
                 .set_language(&tree_sitter_sequel::LANGUAGE.into())
                 .expect("tree_sitter_sequel init fail");
+        } else if language == "bash" {
+            parser
+                .set_language(&tree_sitter_bash::LANGUAGE.into())
+                .expect("tree_sitter_sequel init fail");
+        } else if language == "js" {
+            parser
+                .set_language(&tree_sitter_javascript::LANGUAGE.into())
+                .expect("tree_sitter_sequel init fail");
         } else {
             panic!("选择语言类型");
         }
