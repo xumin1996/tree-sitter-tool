@@ -3,6 +3,10 @@ name = "tree-sitter-tools"
 version = "0.1.0"
 edition = "2024"
 
+[target.x86_64-pc-windows-gnu]
+linker = "x86_64-w64-mingw32-gcc"
+ar = "x86_64-w64-mingw32-ar"
+
 [dependencies]
 clap = "4.5.41"
 serde = "1.0.219"

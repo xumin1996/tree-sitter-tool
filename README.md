@@ -8,3 +8,7 @@ sudo pacman -S llvm clang wasi-libc
 ```bash
 export WASI_SYSROOT="/usr/share/wasi-sysroot"   
 ```
+
+# 编译到musl
+archlinux安装`pacman -S musl`
+编译`cargo build --release --target x86_64-unknown-linux-musl`

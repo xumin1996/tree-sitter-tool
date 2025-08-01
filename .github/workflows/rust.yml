@@ -20,3 +20,8 @@ jobs:
       run: cargo build --verbose
     - name: Run tests
       run: cargo test --verbose
+    - name: Upload binary
+      uses: actions/upload-artifact@v3
+      with:
+        name: tree-sitter-tools  # Artifact 名称（可自定义，如包含平台信息）
+        path: target/release/tree-sitter-tools  # 二进制文件路径（替换为你的项目名称）
