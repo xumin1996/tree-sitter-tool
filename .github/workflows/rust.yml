@@ -41,5 +41,5 @@ jobs:
     - name: Upload binary
       uses: actions/upload-artifact@v4
       with:
-        name: tree-sitter-tools
-        path: target/release/tree-sitter-tools
+        name: tree-sitter-tools-musl
+        path: target/x86_64-unknown-linux-musl/release/tree-sitter-tools
