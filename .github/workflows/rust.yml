@@ -43,3 +43,23 @@ jobs:
       with:
         name: tree-sitter-tools-musl
         path: target/x86_64-unknown-linux-musl/release/tree-sitter-tools
+  build-x86_64-pc-windows-gnu:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install toolchain
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y mingw-w64
+    - name: install musl
+      run: |
+        # 安装依赖
+        rustup default stable
+        rustup target add x86_64-pc-windows-gnu
+    - name: Build
+      run: cargo build --target x86_64-pc-windows-gnu --release --verbose
+    - name: Upload binary
+      uses: actions/upload-artifact@v4
+      with:
+        name: tree-sitter-tools-x86_64-pc-windows-gnu
+        path: target/x86_64-pc-windows-gnu/release/tree-sitter-tools.exe
