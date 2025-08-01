@@ -27,6 +27,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Install musl toolchain
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y musl-tools
     - name: install musl
       run: |
         # 安装依赖
