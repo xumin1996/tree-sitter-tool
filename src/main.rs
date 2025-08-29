@@ -6,14 +6,14 @@ use tree_sitter::{Node, Parser};
 
 fn main() {
     // 环境变量
-    let matches = Command::new("rig-search")
-        .about("基于LLM解释代码，并向量化搜索的工具")
+    let matches = Command::new("tree-sitter-tools")
+        .about("解析代码为string")
         .arg(
             Arg::new("language")
                 .short('l')
                 .long("language")
                 .value_parser(clap::value_parser!(String))
-                .help("代码语言，支持java,python,rust,sql"),
+                .help("编程语言(java,python,rust,sql,bash,js,go,c,lua)"),
         )
         .arg(Arg::new("filename").value_parser(clap::value_parser!(String)))
         .get_matches();
@@ -50,6 +50,18 @@ fn main() {
         } else if language == "js" {
             parser
                 .set_language(&tree_sitter_javascript::LANGUAGE.into())
+                .expect("tree_sitter_sequel init fail");
+        } else if language == "go" {
+            parser
+                .set_language(&tree_sitter_go::LANGUAGE.into())
+                .expect("tree_sitter_sequel init fail");
+        } else if language == "c" {
+            parser
+                .set_language(&tree_sitter_c::LANGUAGE.into())
+                .expect("tree_sitter_sequel init fail");
+        } else if language == "lua" {
+            parser
+                .set_language(&tree_sitter_lua::LANGUAGE.into())
                 .expect("tree_sitter_sequel init fail");
         } else {
             panic!("选择语言类型");
