@@ -1,3 +1,10 @@
+[env]
+WASI_SDK_PATH = "/usr/local/wasi-sdk"
+CC = "${WASI_SDK_PATH}/bin/clang"
+CXX = "${WASI_SDK_PATH}/bin/clang++"
+AR = "${WASI_SDK_PATH}/bin/ar"
+WASI_SYSROOT = "${WASI_SDK_PATH}/share/wasi-sysroot"
+
 [tasks.clean]
 description = "清理环境"
 command = "cargo"
@@ -17,13 +24,7 @@ args = ["build", "--release", "--target", "x86_64-unknown-linux-musl"]
 description = "编译wasm32-wasip1"
 command = "cargo"
 args = ["build", "--release", "--target", "wasm32-wasip1"]
-env = {
-    "WASI_SDK_PATH" = "/usr/local/wasi-sdk",
-    "CC" = "${WASI_SDK_PATH}/bin/clang",
-    "CXX" = "${WASI_SDK_PATH}/bin/clang++",
-    "WASI_SYSROOT" = "${WASI_SDK_PATH}/share/wasi-sysroot",
-    "AR" = "${WASI_SDK_PATH}/bin/ar"
-}
+
 
 [tasks.build-windows]
 description = "编译x86"
