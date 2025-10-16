@@ -32,4 +32,4 @@ script = [
 
 [tasks.build-all]
 description = "编译所有平台"
-dependencies = ["clean", "build-release", "build-musl", "build-wasm", "build-windows", "copy-to-output"]
+dependencies = ["clean", "build-release", "build-musl", "build-windows", "copy-to-output"]
