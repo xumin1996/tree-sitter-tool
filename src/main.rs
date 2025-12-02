@@ -1,4 +1,7 @@
-use std::fs;
+use std::{
+    fs,
+    io::{self, Read},
+};
 
 use clap::{Arg, Command};
 use serde_json::{Value, json};
@@ -20,7 +23,15 @@ fn main() {
 
     let content = matches
         .get_one::<String>("filename")
-        .map(fs::read_to_string)
+        .map(|file_name| {
+            if "-" != file_name {
+                return fs::read_to_string(file_name);
+            } else {
+                let mut buf = String::new();
+                io::stdin().read_to_string(&mut buf);
+                return Ok(buf);
+            }
+        })
         .expect("file not exists")
         .expect("read fail");
 
