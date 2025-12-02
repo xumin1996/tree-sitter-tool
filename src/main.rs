@@ -16,7 +16,7 @@ fn main() {
                 .short('l')
                 .long("language")
                 .value_parser(clap::value_parser!(String))
-                .help("编程语言(java,python,rust,sql,bash,js,go,c,lua,html)"),
+                .help("编程语言(java,python,rust,sql,bash,js,ts,tsx,go,c,lua,html)"),
         )
         .arg(Arg::new("filename").value_parser(clap::value_parser!(String)))
         .get_matches();
