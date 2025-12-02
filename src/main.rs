@@ -62,6 +62,14 @@ fn main() {
             parser
                 .set_language(&tree_sitter_javascript::LANGUAGE.into())
                 .expect("tree_sitter_sequel init fail");
+        } else if language == "ts" {
+            parser
+                .set_language(&tree_sitter_typescript::LANGUAGE_TYPESCRIPT.into())
+                .expect("tree_sitter_sequel init fail");
+        } else if language == "tsx" {
+            parser
+                .set_language(&tree_sitter_typescript::LANGUAGE_TSX.into())
+                .expect("tree_sitter_sequel init fail");
         } else if language == "go" {
             parser
                 .set_language(&tree_sitter_go::LANGUAGE.into())
