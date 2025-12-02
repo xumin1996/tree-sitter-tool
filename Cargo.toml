@@ -1,3 +1,7 @@
+[profile.release]
+lto = "thin"
+opt-level = "s"
+
 [package]
 name = "tree-sitter-tools"
 version = "0.1.0"
