@@ -13,7 +13,7 @@ fn main() {
                 .short('l')
                 .long("language")
                 .value_parser(clap::value_parser!(String))
-                .help("编程语言(java,python,rust,sql,bash,js,go,c,lua)"),
+                .help("编程语言(java,python,rust,sql,bash,js,go,c,lua,html)"),
         )
         .arg(Arg::new("filename").value_parser(clap::value_parser!(String)))
         .get_matches();
@@ -62,6 +62,10 @@ fn main() {
         } else if language == "lua" {
             parser
                 .set_language(&tree_sitter_lua::LANGUAGE.into())
+                .expect("tree_sitter_sequel init fail");
+        } else if language == "html" {
+            parser
+                .set_language(&tree_sitter_html::LANGUAGE.into())
                 .expect("tree_sitter_sequel init fail");
         } else {
             panic!("选择语言类型");
